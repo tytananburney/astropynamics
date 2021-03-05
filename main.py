@@ -1,5 +1,5 @@
 from bokeh.io import curdoc
-from astropynamics.EphemerisApp import EphemerisApp
+from EphemerisApp import EphemerisApp
 
 # Builds the entire application
 ephemerisApp = EphemerisApp()

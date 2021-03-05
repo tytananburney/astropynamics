@@ -1,4 +1,4 @@
-from astropynamics.models.EphemerisModel import EphemerisModel
+from models.EphemerisModel import EphemerisModel
 from datetime import datetime
 
 

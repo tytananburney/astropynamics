@@ -11,8 +11,8 @@ import inspect
 import pandas as pd
 from datetime import datetime
 
-from astropynamics.SpiceProvider import SpiceProvider
-from astropynamics.models import StandardEphemerisModels
+from SpiceProvider import SpiceProvider
+from models import StandardEphemerisModels
 
 
 class EphemerisApp:

@@ -11,8 +11,8 @@ import inspect
 import pandas as pd
 from datetime import datetime
 
-from SpiceProvider import SpiceProvider
-from models import StandardEphemerisModels
+from app.SpiceProvider import SpiceProvider
+from app.models import StandardEphemerisModels
 
 
 class EphemerisApp:

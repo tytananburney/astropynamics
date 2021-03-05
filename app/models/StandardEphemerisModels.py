@@ -1,4 +1,4 @@
-from models.EphemerisModel import EphemerisModel
+from app.models.EphemerisModel import EphemerisModel
 from datetime import datetime
 
 

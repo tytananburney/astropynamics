@@ -40,12 +40,12 @@ class SpiceProvider(object):
             return
 
         if self.meta_kernel is not None:
-            spiceypy.unload(f'kernels/{self.meta_kernel}')
+            spiceypy.unload(f'http://s3.amazonaws.com/astropynamics/mk/{self.meta_kernel}')
             for k in self.fetch_kernels():
                 print(k)
 
         if kernel is not None:
-            spiceypy.furnsh(f'kernels/{kernel}')
+            spiceypy.furnsh(f'http://s3.amazonaws.com/astropynamics/mk/{kernel}')
 
         self.meta_kernel = kernel
 

@@ -1,6 +1,7 @@
 import spiceypy
 import pandas as pd
 import datetime as dt
+import s3manager
 
 from bokeh.models import ColumnDataSource
 
@@ -32,7 +33,6 @@ class SpiceProvider(object):
         self.cum_data = pd.DataFrame(columns=SpiceProvider.STATE_COLUMNS.append('radii'))
         self.cum_source = ColumnDataSource(self.cum_data)
 
-        self.set_meta_kernel("juno.tm")
 
     def set_meta_kernel(self, kernel):
 
@@ -40,12 +40,11 @@ class SpiceProvider(object):
             return
 
         if self.meta_kernel is not None:
-            spiceypy.unload(f'http://astropynamics.s3.amazonaws.com/mk/{self.meta_kernel}')
-            for k in self.fetch_kernels():
-                print(k)
+            spiceypy.unload(self.meta_kernel)
 
         if kernel is not None:
-            spiceypy.furnsh(f'http://astropynamics.s3.amazonaws.com/mk/{kernel}')
+            s3manager.get_meta_kernel(kernel)
+            spiceypy.furnsh(kernel)
 
         self.meta_kernel = kernel
 

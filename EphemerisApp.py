@@ -145,6 +145,7 @@ class EphemerisApp:
         self.tabs = Tabs(tabs=[self.plotTab, self.dataTab, self.kernelTab])
 
         # init data
+        self.update_model(None, 0, 'SolarSystem')
         self.update_epochs(None, 0, 0)
         self.update_states(None, 0, 0)
 

@@ -2,11 +2,11 @@ from models.EphemerisModel import EphemerisModel
 from datetime import datetime
 
 
-def GeometricSolarSystem():
+def SolarSystem():
 
     SolarSystemModel = EphemerisModel()
     SolarSystemModel.name = "The Solar System"
-    SolarSystemModel.kernel = "solarsystem.tm"
+    SolarSystemModel.kernel = "kernels/mk/solarsystem.tm"
     SolarSystemModel.objects = dict(SUN=10, MERCURY=1, VENUS=2, EARTH=3, MARS=4, JUPITER=5, SATURN=6, URANUS=7,
                                     NEPTUNE=8)
     SolarSystemModel.center = 'SUN'
@@ -26,7 +26,7 @@ def ApparentSolarSystem():
 
     SolarSystemModel = EphemerisModel()
     SolarSystemModel.name = "Apparent Solar System"
-    SolarSystemModel.kernel = "solarsystem.tm"
+    SolarSystemModel.kernel = "kernels/mk/solarsystem.tm"
     SolarSystemModel.objects = dict(SUN=10, MERCURY=1, VENUS=2, EARTH=3, MARS=4, JUPITER=5, SATURN=6, URANUS=7,
                                     NEPTUNE=8)
     SolarSystemModel.center = 'SUN'
@@ -46,7 +46,7 @@ def SunEarthMoon():
 
     SunEarthMoonModel = EphemerisModel()
     SunEarthMoonModel.name = "Sun Earth-Moon System"
-    SunEarthMoonModel.kernel = "solarsystem.tm"
+    SunEarthMoonModel.kernel = "kernels/mk/solarsystem.tm"
     SunEarthMoonModel.objects = dict(SUN=10, EARTH=399, MOON=301)
     SunEarthMoonModel.center = 'EARTH'
     SunEarthMoonModel.target = 'MOON'
@@ -65,7 +65,7 @@ def JunoTransferTrajectory():
 
     JunoHeliocentricModel = EphemerisModel()
     JunoHeliocentricModel.name = "Juno Heliocentric Trajectory"
-    JunoHeliocentricModel.kernel = "juno.tm"
+    JunoHeliocentricModel.kernel = "kernels/mk/juno.tm"
     JunoHeliocentricModel.objects = dict(JUNO=-61, SUN=10, EARTH=3, JUPITER=5)
     JunoHeliocentricModel.center = 'SUN'
     JunoHeliocentricModel.target = 'JUNO'
@@ -84,7 +84,7 @@ def JunoJovianTrajectory():
 
     JunoHeliocentricModel = EphemerisModel()
     JunoHeliocentricModel.name = "Juno Jovian Trajectory"
-    JunoHeliocentricModel.kernel = "juno.tm"
+    JunoHeliocentricModel.kernel = "kernels/mk/juno.tm"
     JunoHeliocentricModel.objects = dict(JUNO=-61, JUPITER=599, IO=516, EUROPA=515, GANYMEDE=514, CALLISTO=505,
                                          AMALTHEA=504, THEBE=503, ADRASTEA=502, METIS=501)
     JunoHeliocentricModel.center = 'JUPITER'
@@ -104,7 +104,7 @@ def JwstHaloOrbitModel():
 
     JunoHeliocentricModel = EphemerisModel()
     JunoHeliocentricModel.name = "JWST Halo Orbit"
-    JunoHeliocentricModel.kernel = "l2lagrange.tm"
+    JunoHeliocentricModel.kernel = "kernels/mk/l2lagrange.tm"
     JunoHeliocentricModel.objects = dict(JWST=-170, L2=392, EARTH_BARYCENTER=3, EARTH=399, MOON=301, SUN=10)
     JunoHeliocentricModel.center = 'L2'
     JunoHeliocentricModel.target = 'JWST'
@@ -122,7 +122,7 @@ def Mars2020Model():
 
     JunoHeliocentricModel = EphemerisModel()
     JunoHeliocentricModel.name = "MARS 2020"
-    JunoHeliocentricModel.kernel = "mars2020.tm"
+    JunoHeliocentricModel.kernel = "kernels/mk/mars2020.tm"
     JunoHeliocentricModel.objects = dict(PERSEVERANCE=-168, MARS=4, EARTH=399, SUN=10)
     JunoHeliocentricModel.center = 'SUN'
     JunoHeliocentricModel.target = 'PERSEVERANCE'

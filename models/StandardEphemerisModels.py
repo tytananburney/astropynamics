@@ -135,4 +135,22 @@ def Mars2020Model():
     JunoHeliocentricModel.step_size = 'Day'
 
     return JunoHeliocentricModel
+    
+def ParkerSolarProbeModel():
+
+    JunoHeliocentricModel = EphemerisModel()
+    JunoHeliocentricModel.name = "Parker Solar Probe"
+    JunoHeliocentricModel.kernel = "kernels/mk/parkersolarprobe.tm"
+    JunoHeliocentricModel.objects = dict(SPP=-96, MERCURY=1, VENUS=2, EARTH=399, SUN=10)
+    JunoHeliocentricModel.center = 'SUN'
+    JunoHeliocentricModel.target = 'SPP'
+    JunoHeliocentricModel.frame = 'J2000'
+    JunoHeliocentricModel.plane = 0
+    JunoHeliocentricModel.vector_type = 'Geometric'
+    JunoHeliocentricModel.epoch = datetime.strptime('2018-08-12', "%Y-%m-%d")
+    JunoHeliocentricModel.offset = 0
+    JunoHeliocentricModel.duration = 365
+    JunoHeliocentricModel.step_size = 'Day'
+
+    return JunoHeliocentricModel
 

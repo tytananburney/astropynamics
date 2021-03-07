@@ -280,7 +280,7 @@ class EphemerisApp:
 
     def animate_update(self):
 
-        self.offset.value = 0 if self.offset.value > self.offset.end else self.offset.value + 1
+        self.offset.value = 0 if self.offset.value > self.offset.end else self.offset.value + 2
         if self.offset.value == 0:
             SpiceProvider.reset_source(self.spice_provider.cum_source)
 

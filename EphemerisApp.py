@@ -105,6 +105,16 @@ class EphemerisApp:
         self.update_button = Button(label="Play")
         self.export_button = Button(label="Export")
 
+        self.infoDiv = Div(text="<hr>All ephemeris data shown on this website was obtained from publicly available "
+                                "SPICE files located at <a href='https://naif.jpl.nasa.gov/naif/data.html'>"
+                                "https://naif.jpl.nasa.gov/naif/data.html</a>, which is hosted by the  "
+                                "Navigation and Ancillary Information Facility (NAIF) at the NASA Jet Propulsion "
+                                "Laboratory. The exception is the SPICE kernel for the Parker Solar Probe, which is "
+                                "available at <a href='https://sppgway.jhuapl.edu/ancil_products'>"
+                                "https://sppgway.jhuapl.edu/ancil_products</a>, hosted by the Johns Hopkins University "
+                                "Applied Physics Laboratory. SpiceyPy is being used to process the SPICE files.",
+                           sizing_mode='stretch_width')
+
         # create plot tab objects
         self.plot = figure(match_aspect=True,
                            sizing_mode="stretch_both",
@@ -172,7 +182,7 @@ class EphemerisApp:
                              self.update_button)
 
     def get_layout(self):
-        return row([self.inputs, self.tabs])
+        return column(row([self.inputs, self.tabs]), self.infoDiv, sizing_mode='stretch_width')
 
     def update_kenerls_tab(self):
         kernels = self.spice_provider.fetch_kernels()

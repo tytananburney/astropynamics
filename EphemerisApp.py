@@ -41,7 +41,7 @@ class EphemerisApp:
         self.cum_source = self.spice_provider.cum_source
 
         # gather options from ephemeris model and spice provider
-        allowed_models = [model[0] for model in self.available_models]
+        self.allowed_models = {model[1]().name: model[1] for model in self.available_models}
         allowed_objects = [self.spice_provider.fromId(name) for name in self.ephemeris_model.objects]
         allowed_frames = self.ephemeris_model.FRAMES
         allowed_corrections = [name for name in SpiceProvider.CORRECTIONS]
@@ -51,8 +51,7 @@ class EphemerisApp:
         # set up widgets
         self.model = Select(
             title="Ephemeris Model",
-            value=self.ephemeris_model.name,
-            options=allowed_models)
+            options=list(self.allowed_models.keys()))
 
         self.center = Select(
             title="Center",
@@ -155,7 +154,8 @@ class EphemerisApp:
         self.tabs = Tabs(tabs=[self.plotTab, self.dataTab, self.kernelTab])
 
         # init data
-        self.update_model(None, 0, 'SolarSystem')
+        self.model.value = "The Solar System"
+        self.update_model(None, 0, self.model.value)
         self.update_epochs(None, 0, 0)
         self.update_states(None, 0, 0)
 
@@ -198,7 +198,7 @@ class EphemerisApp:
         self.active = False
 
         # update model and load new kernel
-        self.ephemeris_model = dict(self.available_models)[new]()
+        self.ephemeris_model = self.allowed_models[new]()
         self.spice_provider.set_meta_kernel(self.ephemeris_model.kernel)
         self.spice_provider.setSpiceIds(self.ephemeris_model.objects)
 

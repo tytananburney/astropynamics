@@ -64,7 +64,7 @@ def SunEarthMoon():
 def JunoTransferTrajectory():
 
     JunoHeliocentricModel = EphemerisModel()
-    JunoHeliocentricModel.name = "Juno Heliocentric Trajectory"
+    JunoHeliocentricModel.name = "Juno Transfer Trajectory"
     JunoHeliocentricModel.kernel = "kernels/mk/juno.tm"
     JunoHeliocentricModel.objects = dict(JUNO=-61, SUN=10, EARTH=3, JUPITER=5)
     JunoHeliocentricModel.center = 'SUN'
@@ -100,7 +100,7 @@ def JunoJovianTrajectory():
     return JunoHeliocentricModel
 
 
-def JwstHaloOrbitModel():
+def JwstHaloOrbit():
 
     JunoHeliocentricModel = EphemerisModel()
     JunoHeliocentricModel.name = "JWST Halo Orbit"
@@ -118,7 +118,7 @@ def JwstHaloOrbitModel():
 
     return JunoHeliocentricModel
 
-def Mars2020Model():
+def Mars2020():
 
     JunoHeliocentricModel = EphemerisModel()
     JunoHeliocentricModel.name = "MARS 2020"
@@ -136,7 +136,7 @@ def Mars2020Model():
 
     return JunoHeliocentricModel
     
-def ParkerSolarProbeModel():
+def ParkerSolarProbe():
 
     JunoHeliocentricModel = EphemerisModel()
     JunoHeliocentricModel.name = "Parker Solar Probe"
@@ -148,6 +148,24 @@ def ParkerSolarProbeModel():
     JunoHeliocentricModel.plane = 0
     JunoHeliocentricModel.vector_type = 'Geometric'
     JunoHeliocentricModel.epoch = datetime.strptime('2018-08-12', "%Y-%m-%d")
+    JunoHeliocentricModel.offset = 0
+    JunoHeliocentricModel.duration = 365
+    JunoHeliocentricModel.step_size = 'Day'
+
+    return JunoHeliocentricModel
+
+def Messenger():
+
+    JunoHeliocentricModel = EphemerisModel()
+    JunoHeliocentricModel.name = "Messenger"
+    JunoHeliocentricModel.kernel = "kernels/mk/messenger.tm"
+    JunoHeliocentricModel.objects = dict(MESSENGER=-236, MERCURY=1, VENUS=2, EARTH=3, SUN=10)
+    JunoHeliocentricModel.center = 'SUN'
+    JunoHeliocentricModel.target = 'MESSENGER'
+    JunoHeliocentricModel.frame = 'J2000'
+    JunoHeliocentricModel.plane = 0
+    JunoHeliocentricModel.vector_type = 'Geometric'
+    JunoHeliocentricModel.epoch = datetime.strptime('2004-08-03', "%Y-%m-%d")
     JunoHeliocentricModel.offset = 0
     JunoHeliocentricModel.duration = 365
     JunoHeliocentricModel.step_size = 'Day'
